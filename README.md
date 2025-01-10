@@ -1,0 +1,1 @@
+# plugutopia.plugin.template
