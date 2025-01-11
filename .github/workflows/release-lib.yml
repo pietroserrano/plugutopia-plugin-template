@@ -34,7 +34,7 @@ jobs:
   release:
     needs: filter
     if: ${{ (needs.filter.outputs.changed == 'true' && github.event_name == 'push') || (inputs.libsToRelease == 'all') ||  (inputs.libsToRelease == 'PlugUtopia.Plugin.Template')}}
-    uses: pietroserrano/pmp-plugin-system/.github/workflows/nuget.yml@main
+    uses: pietroserrano/plugutopia/.github/workflows/nuget.yml@main
     with:
       NET_VERSION: '9.x'
       PROJECT_DIRECTORY_NAME: src/working
