@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <!-- Configuration for build on output plugin folder -->
+    <!--<OutputPath>..\..\Apps\plugins\$(AssemblyName)</OutputPath>-->
+    <!--<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>-->
+    <!--<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>-->
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="PlugUtopia.Plugin" Version="1.0.4" />
+  </ItemGroup>  
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="plugutopia-tools --generate-manifest $(OutDir) $([System.IO.Path]::Combine($(TargetDir), $(AssemblyName)))" />
+  </Target>
+  <Target Name="PostPublishActions" AfterTargets="Publish">
+    <Exec Command="plugutopia-tools --generate-manifest $(PublishDir) $([System.IO.Path]::Combine($(TargetDir), $(AssemblyName)))" />
+    <Exec Command="plugutopia-tools --generate-package $([System.IO.Path]::Combine($(PublishDir), manifest.json))" />
+  </Target>
+  <ItemGroup>
+    <None Remove="internal-manifest.json" />
+    <EmbeddedResource Include="internal-manifest.json" />
+  </ItemGroup>
+</Project>
