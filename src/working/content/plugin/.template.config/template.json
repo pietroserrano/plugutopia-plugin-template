@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "pietroserrano",
+  "classifications": [ "Common", "Classlib" ],
+  "identity": "PlugUtopia.Plugin.Template",
+  "name": "PlugUtopia: plugin template",
+  "shortName": "plugutopia-plugin",
+  "sourceName":"plugutopia-plugin",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "forms": {
+    "ValueAfterLastDot": {
+      "identifier": "replace",
+      "pattern": "^.*\\.(?=[^\\.]+$)",
+      "replacement": ""
+    }
+  },
+  "symbols": {
+    "app1Rename": {
+      "type": "derived",
+      "valueSource": "name",
+      "valueTransform": "ValueAfterLastDot",
+      "replaces": "plugin",
+      "fileRename": "plugin",
+      "description": "A value derived from the 'name' param, used to rename plugin"
+    },
+    "id01":{
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "4211006e-a69c-4703-9d3f-6ff85128301b",
+      "parameters": {
+        "defaultFormat":"D"
+      }
+    }
+  }
+}
