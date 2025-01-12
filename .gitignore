@@ -3,3 +3,5 @@ src/working/bin
 src/working/content/plugin/obj
 src/working/content/plugin/bin
 src/working/content/plugin/.idea
+.DS_Store
+plugutopia-plugin-template.sln
