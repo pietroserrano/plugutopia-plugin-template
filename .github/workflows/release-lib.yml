@@ -44,6 +44,5 @@ jobs:
       IS_PRE_RELEASE: ${{ contains(inputs.preRelease, 'true') }}
     secrets:
       NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NUGET_SOURCE: https://api.nuget.org/v3/index.json
  
